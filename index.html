@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Three JavaScript mini projects: a guessing game, a task board, and a character creator.">
+  <title>MiniLab | JavaScript Basics</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/game.js" defer></script>
+  <script src="js/board.js" defer></script>
+  <script src="js/character.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="MiniLab home"><span class="logo-mark">M</span> mini<span class="logo-accent">lab.</span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#game">01 Game</a>
+        <a href="#board">02 Board</a>
+        <a href="#creator">03 Creator</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="intro" aria-labelledby="intro-title">
+      <div>
+        <p class="eyebrow">WEB TECHNOLOGIES · ASSIGNMENT 05</p>
+        <h1 id="intro-title">JavaScript <span>MiniLab</span></h1>
+        <p class="intro-subtitle">Three small apps built with plain JavaScript. Play a game, organize your study tasks, and create a character.</p>
+        <a class="primary-link" href="#game">Explore the projects <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="intro-note" aria-label="Project highlights">
+        <div class="intro-symbol" aria-hidden="true">{ JS }</div>
+        <p>Just the basics.</p>
+        <span>Variables · Arrays · DOM · Events</span>
+      </div>
+    </section>
+
+    <section class="app-section" id="game" aria-labelledby="game-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">TASK 01 / BROWSER GAME</p><h2 id="game-title">Higher or Lower</h2><p>Will the next score go up or down? Reach a streak of five to win.</p></div>
+        <span class="section-label">Conditions & Random</span>
+      </div>
+      <div class="game-layout">
+        <div class="panel game-main">
+          <div class="game-stats" aria-label="Game statistics">
+            <div><span>Lives</span><strong id="game-lives">3</strong></div>
+            <div><span>Streak</span><strong id="game-streak">0</strong></div>
+            <div><span>Best streak</span><strong id="game-best">0</strong></div>
+          </div>
+          <div class="game-scorebox">
+            <p>CURRENT SCORE</p>
+            <strong id="game-number" aria-live="polite">?</strong>
+            <small>Score range: 1 to 20</small>
+          </div>
+          <p id="game-message" class="game-message" aria-live="polite">Choose your guess to start.</p>
+          <div class="game-buttons">
+            <button class="btn btn-dark" type="button" data-guess="higher">↑ Higher or equal</button>
+            <button class="btn btn-outline" type="button" data-guess="lower">↓ Lower or equal</button>
+          </div>
+          <button id="game-restart" class="text-button" type="button">↻ Restart game</button>
+        </div>
+        <aside class="panel game-side">
+          <h3>How to play</h3>
+          <ol class="rules-list"><li>A random score from 1 to 20 is shown.</li><li>Guess whether the next one is higher or lower.</li><li>Equal scores count as correct for both guesses.</li><li>Get five correct guesses in a row to win. Three wrong guesses end the game.</li></ol>
+          <div class="side-divider"></div>
+          <h3>Last rounds</h3>
+          <ul id="game-history" class="round-history"><li class="muted-item">Your rounds will appear here.</li></ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="app-section" id="board" aria-labelledby="board-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">TASK 02 / DATA-DRIVEN PAGE</p><h2 id="board-title">Study Task Board</h2><p>Organize your study plan with a simple Kanban board.</p></div>
+        <span class="section-label">Arrays & DOM</span>
+      </div>
+      <div class="panel board-panel">
+        <div class="board-topline">
+          <div class="board-progress-label"><strong id="board-progress-text">0 of 0 done</strong><span>Study progress</span></div>
+          <progress id="board-progress" value="0" max="12" aria-label="Completed tasks"></progress>
+        </div>
+        <div class="board-toolbar">
+          <label class="control-label">Search tasks<input id="board-search" type="search" placeholder="Search by title..."></label>
+          <label class="control-label">Category<select id="board-filter"><option value="all">All categories</option><option value="Study">Study</option><option value="Code">Code</option><option value="Personal">Personal</option></select></label>
+          <label class="control-label">Sort by priority<select id="board-sort"><option value="high">High first</option><option value="low">Low first</option></select></label>
+        </div>
+        <p id="board-message" class="board-message" role="status" aria-live="polite">Move tasks with the arrow buttons. In Progress can hold only 3 tasks.</p>
+        <div id="kanban-board" class="kanban-board" aria-label="Kanban task columns"></div>
+        <form id="new-task-form" class="add-task-form">
+          <div class="add-task-heading"><h3>+ Add a task</h3><p>Add your own item to the board.</p></div>
+          <label class="control-label">Task name<input id="new-task-title" type="text" maxlength="45" placeholder="Example: Practice JavaScript" required></label>
+          <label class="control-label">Priority<select id="new-task-priority"><option value="1">High</option><option value="2" selected>Medium</option><option value="3">Low</option></select></label>
+          <label class="control-label">Category<select id="new-task-tag"><option value="Study">Study</option><option value="Code">Code</option><option value="Personal">Personal</option></select></label>
+          <button class="btn btn-dark" type="submit">Add task</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="app-section" id="creator" aria-labelledby="creator-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">TASK 03 / LIVE VALIDATION</p><h2 id="creator-title">Character Creator</h2><p>Create a hero, balance four skills, and see your preview change instantly.</p></div>
+        <span class="section-label">Events & Forms</span>
+      </div>
+      <div class="creator-layout">
+        <div class="panel form-panel">
+          <h3>Build your character</h3>
+          <p class="form-helper">All fields are required. You have exactly 20 skill points.</p>
+          <form id="hero-form">
+            <p id="hero-form-summary" class="form-summary" role="alert" hidden></p>
+            <div class="form-row">
+              <div class="field"><label for="hero-name">Hero name</label><input id="hero-name" name="name" type="text" minlength="3" maxlength="16" pattern="[A-Za-z ]+" placeholder="e.g. Orion" required autocomplete="off"><small id="error-name" class="field-error" aria-live="polite"></small></div>
+              <div class="field"><label for="hero-class">Class</label><select id="hero-class" name="class" required><option value="Warrior">Warrior</option><option value="Mage">Mage</option><option value="Ranger">Ranger</option></select><small id="error-class" class="field-error" aria-live="polite"></small></div>
+            </div>
+            <div class="field"><label for="hero-color">Card color</label><select id="hero-color" name="color" required><option value="blue">Ocean blue</option><option value="violet">Violet</option><option value="orange">Sunset orange</option><option value="green">Mint green</option></select><small id="error-color" class="field-error" aria-live="polite"></small></div>
+            <div class="skills-heading"><h4>Skill points</h4><strong id="points-count" aria-live="polite">20 / 20</strong></div>
+            <div class="form-row skills-grid">
+              <div class="field"><label for="hero-attack">Attack</label><input id="hero-attack" name="attack" type="number" min="1" max="10" step="1" value="5" required><small id="error-attack" class="field-error" aria-live="polite"></small></div>
+              <div class="field"><label for="hero-defense">Defense</label><input id="hero-defense" name="defense" type="number" min="1" max="10" step="1" value="5" required><small id="error-defense" class="field-error" aria-live="polite"></small></div>
+              <div class="field"><label for="hero-magic">Magic</label><input id="hero-magic" name="magic" type="number" min="1" max="10" step="1" value="5" required><small id="error-magic" class="field-error" aria-live="polite"></small></div>
+              <div class="field"><label for="hero-speed">Speed</label><input id="hero-speed" name="speed" type="number" min="1" max="10" step="1" value="5" required><small id="error-speed" class="field-error" aria-live="polite"></small></div>
+            </div>
+            <p class="skills-tip">Class bonus rule: Warrior needs Attack ≥ 5, Mage needs Magic ≥ 5, Ranger needs Speed ≥ 5. No two skills may both be 9 or higher.</p>
+            <button class="btn btn-dark create-button" type="submit">Create character →</button>
+          </form>
+        </div>
+        <div class="creator-right">
+          <div id="hero-preview" class="panel hero-preview theme-blue" aria-label="Live character preview">
+            <div class="preview-top"><span>LIVE PREVIEW</span><span class="preview-star" aria-hidden="true">✦</span></div>
+            <div class="avatar-circle" id="preview-avatar">?</div>
+            <h3 id="preview-name">Your hero</h3>
+            <p id="preview-class">Warrior</p>
+            <div class="preview-divider"></div>
+            <div class="preview-skills"><span>ATK <b id="preview-attack">5</b></span><span>DEF <b id="preview-defense">5</b></span><span>MAG <b id="preview-magic">5</b></span><span>SPD <b id="preview-speed">5</b></span></div>
+          </div>
+          <div id="hero-result" class="panel hero-result" aria-live="polite"><p>After successful validation, your finished character will appear here.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container"><span>MiniLab · JavaScript Basics</span><span>Built with HTML, CSS & vanilla JS</span></div></footer>
+</body>
+</html>
